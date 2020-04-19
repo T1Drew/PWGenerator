@@ -21,7 +21,7 @@ generateEl.addEventListener('click', () => {
     const hasNumber = numbersEl.checked;
     const hasSymbol = symbolsEl.checked;
 
-    resultEl.innerText = generatePassword(hasLower, hasNumber, hasUpper, hasSymbol, length);
+    resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
 
 clipboardEl.addEventListener('click',() => {
@@ -41,13 +41,13 @@ clipboardEl.addEventListener('click',() => {
 })
 
 
-function generatePassword(lower, upper, number, symbol, length) {
+function generatePassword(upper, lower , number, symbol, length) {
     
     let generatedPassword = '';
     
-    const typesCount = lower + upper + number + symbol;
+    const typesCount = upper + lower + number + symbol;
     
-    const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+    const typesArr = [{upper}, {lower}, {number}, {symbol}].filter(item => Object.values(item)[0]);
     
     if(typesCount === 0) {
         return '';
@@ -66,11 +66,11 @@ function generatePassword(lower, upper, number, symbol, length) {
     return finalPass;
 }
 
-function getRandomLC() {
+function getRandomUC() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
-function getRandomUC() {
+function getRandomLC() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
